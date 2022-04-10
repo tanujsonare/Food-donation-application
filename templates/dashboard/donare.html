@@ -1,0 +1,26 @@
+{% extends 'dashboard/base.html' %} 
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section class='text-left container'>
+    <button href="" class="btn btn-success" type="submit">
+        <a href="{% url 'display_donare' %}" style="color:white;" > See Your Donate Food Details </a>
+     </button> 
+    </section> 
+    <br>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{user.username}} Please Fill This Form To Donate Food </legend>
+        </fieldset>
+        {{form|crispy}}
+        <div class="form-group">
+            <button href="" class="btn btn-secondary btn-m active" type="submit">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

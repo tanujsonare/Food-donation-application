@@ -1,0 +1,27 @@
+{% extends "dashboard/base.html" %}
+
+{%load static %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<div class="border-top pt-3 text-center">
+<h1>{% trans "Logout" %}</h1>
+<br>
+<h4>Hi {{ user.username }}!</h4>
+<br>
+<h6>{% trans 'Are you sure you want to logout?' %}</h6>
+<br>
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+
+  <input type="hidden" name="{{ redirect_field_name }}" value="/" />
+  
+  <button type="submit" class="btn btn-danger">{% trans 'Logout' %}</button>
+  
+</form>
+</div>
+
+{% endblock %}

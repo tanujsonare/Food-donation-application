@@ -1,0 +1,53 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="container">
+    {% if donare %}
+    <table class="table table-striped table-bordered table-hover table-dark">
+        <thead>
+            
+            <tr>
+                <th scope="col">Sr.no.</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Date and Time</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Food Details</th>
+                <th scope="col">See Full</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                
+            </tr>
+            
+        </a>
+        </thead>
+      
+        {% for donare in donare %}
+        <tbody>
+            
+            <tr>
+               
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{user.username}}</td>
+                <td>{{donare.donate_date}}</td>
+                <td>{{donare.contact_number}}</td>
+                <td>{{donare.address|slice:"0:50"}}</td>
+                <td>{{donare.food_details|slice:"0:50"}}</td>
+                <td><a href = "{% url 'donare_detail' donare.id %}" style = "color:yellow;font-size:20px;">see full</a></td>
+                <td><a href="{% url 'update_donare' donare.id %}" style = "color:yellow;font-size:20px;" >Click</a></td>
+                <td><a href="{% url 'delete_donare' donare.id %}"><i class="fa fa-trash fa-2x"></i></a></td>
+                
+            </tr>
+            {% endfor %}
+            {% else %}
+              <br><br>
+                <h1 align='center'> Detail Not Found For {{user.username}}  <h1>  
+            {% endif %}  
+
+        </tbody>
+    </table>
+    {% comment %} <h4>All homeworks are completed!! Create to have more!!</h4> {% endcomment %}
+</div>
+
+{% endblock content %}

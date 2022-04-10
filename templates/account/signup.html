@@ -1,0 +1,25 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4"><h1>Register Here</h1></legend>
+      {{form|crispy}}
+    </fieldset>
+    <div class="form-group">
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button type="submit" class = "btn btn-outline-info">Register</button>
+    </div>
+  </form>
+  <div class="border-top pt-4">
+    <small class="text-muted">Already have an account?
+      <a class="ml-2" href="{% url 'account_login' %}"><font class = "text-primary" >Login</font></a>
+    </small>
+  </div>
+</div>
+{% endblock content %}

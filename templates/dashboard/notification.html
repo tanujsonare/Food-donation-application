@@ -1,0 +1,21 @@
+{%extends 'dashboard/base.html'%}
+
+{%block content%}
+
+  <br>
+    <br>
+      <br>
+    {%if notifications%}
+     <ol style="margin-left: 150px;">
+     {%for notification in notifications%}
+      <li><h5><span style="color:red;">{{notification.notification}}</span></h5></li>
+    {%endfor%}
+     </ol>
+     <form  method="post">
+       {%csrf_token%}
+        <button type="submit" class="btn btn-success" style="width:200px;margin-left: 550px;margin-top: 100px;">Clear Notifications</button>
+     </form>
+      {%else%}
+      <h1 style="margin-left: 250px;margin-top: 200px;" align='center'><span style="color:red;">No notification found!!</span></h1>
+      {%endif%}
+{%endblock%}

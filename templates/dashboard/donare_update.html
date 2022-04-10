@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+{% load crispy_forms_tags%}
+
+<div class="container">
+<form method="POST">
+        {% csrf_token %}
+          <div class="container">
+           <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Updating Detail of {{user.username}}</legend>
+        </fieldset>
+           {{form|crispy}}
+        <div class="form-group">
+            <button href="" class="btn btn-secondary btn-m active" type="submit">
+                Save upadated Details
+            </button>
+           
+</div>
+{% endblock content %}
